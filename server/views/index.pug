@@ -2,7 +2,7 @@ extends layout
 include _mixins
 
 block content
-  section.vh-100 
+  section
     .container.py-5.h-100 
       .row.d-flex.justify-content-center.align-items-center.h-100
         .col.col-xl-10 
@@ -18,92 +18,3 @@ block content
               
               ul.list-group.todo-list
                 +todo-item('test')
-
-
-    
-    .container.py-5.h-100
-      .row.d-flex.justify-content-center.align-items-center.h-100
-        .col.col-xl-10
-          .card
-            .card-header.text-center
-              h1 My simple ToDo List App
-            .card-body.p-5
-              form.d-flex.justify-content-center.align-items-center.mb-4
-                .form-outline.flex-fill
-                  input#form2.form-control(type='text' placeholder="New task...")
-                button.btn.btn-info.ms-2(type='submit') Add
-              // Tabs navs
-              ul#ex1.nav.nav-tabs.mb-4.pb-2(role='tablist')
-                li.nav-item(role='presentation')
-                  a#ex1-tab-1.nav-link.active(data-mdb-toggle='tab' href='#ex1-tabs-1' role='tab' aria-controls='ex1-tabs-1' aria-selected='true') All
-                li.nav-item(role='presentation')
-                  a#ex1-tab-2.nav-link(data-mdb-toggle='tab' href='#ex1-tabs-2' role='tab' aria-controls='ex1-tabs-2' aria-selected='false') Active
-                li.nav-item(role='presentation')
-                  a#ex1-tab-3.nav-link(data-mdb-toggle='tab' href='#ex1-tabs-3' role='tab' aria-controls='ex1-tabs-3' aria-selected='false') Completed
-              // Tabs navs
-              // Tabs content
-              #ex1-content.tab-content
-                #ex1-tabs-1.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='ex1-tab-1')
-                  ul.list-group.mb-0
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...' checked='')
-                      s Cras justo odio
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...' checked='')
-                      s Dapibus ac facilisis in
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Morbi leo risus
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Porta ac consectetur ac
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-0.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Vestibulum at eros
-                #ex1-tabs-2.tab-pane.fade(role='tabpanel' aria-labelledby='ex1-tab-2')
-                  ul.list-group.mb-0
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Morbi leo risus
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Porta ac consectetur ac
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-0.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...')
-                      |                     Vestibulum at eros
-                #ex1-tabs-3.tab-pane.fade(role='tabpanel' aria-labelledby='ex1-tab-3')
-                  ul.list-group.mb-0
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...' checked='')
-                      s Cras justo odio
-                    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded(style='background-color: #f4f6f7;')
-                      input.form-check-input.me-2(type='checkbox' value='' aria-label='...' checked='')
-                      s Dapibus ac facilisis in
-              // Tabs content
-
-
-//- block content
-//-   .container 
-//-     h2 My ToDo List 
-//-     form(action="/addtask", method="post")
-//-       input(
-//-         type="text" 
-//-         name="newtask" 
-//-         placeholder="add new task"
-//-       )
-//-       button add
-
-//-       h2 Tasks:
-//-       ul
-//-         each task in tasks 
-//-           li
-//-             input(type="checkbox" name="check" value=task)
-//-             | #{task}
-//-       button(formaction="/removetask" type="submit") Remove 
-
-//-     h2 Completed: 
-//-     ul
-//-       each task in complete
-//-         li 
-//-           input(type="checkbox" checked)
-//-           | #{task}

@@ -1,14 +1,13 @@
 extends layout
 
 block content
-    
-    form.form-signin
-        h1.h3.mb-3.font-weight-normal Sign in
-        
-        input#inputEmail.form-control(type='email' placeholder='Email address' required autofocus)
-        input#inputPassword.form-control(type='password' placeholder='Password' required)
-        
-        button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+    .container.py-5.d-flex.align-items-center.justify-content-center
+        .card.text-center
+            .card-body
+                form.form-signin.justify-content-center.align-items-center.h-5
+                    input#inputEmail.form-control.my-3(type='email' placeholder='Email address' required autofocus)
+                    input#inputPassword.form-control.my-3(type='password' placeholder='Password' required)
+                    button.btn.btn-lg.btn-primary.mb-3(type='submit') Sign in
     
 
     
