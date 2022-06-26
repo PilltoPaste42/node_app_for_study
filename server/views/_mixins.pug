@@ -1,0 +1,14 @@
+mixin todo-item(text)
+    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded.todo-item
+        .row.d-flex.justify-content-center.align-items-center
+            .col-1
+              input.form-check-input.me-2(type='checkbox' onclick='#')
+            .col-6
+              span.h5  #{text} 
+            .col-9
+                button.btn.btn-outline-success Edit
+                button.btn.btn-outline-danger Delete
+                
+
+mixin test()
+    p It is Test!
