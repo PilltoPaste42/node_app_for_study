@@ -2,18 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var sassMV = require('node-sass-middleware');
-
-// // DB setup
-// var mongoDB = 'mongodb://127.0.0.1:27044';
-// mongoose.connect(mongoDB);
-// mongoose.Promise = global.Promise;
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -24,10 +14,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sassMV(
   {
