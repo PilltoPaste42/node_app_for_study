@@ -1,14 +1,21 @@
-mixin todo-item(text)
-    li.list-group-item.d-flex.align-items-center.border-0.mb-2.rounded.todo-item
-        .row.d-flex.justify-content-center.align-items-center
-            .col-1
-              input.form-check-input.me-2(type='checkbox' onclick='#')
-            .col-6
-              span.h5  #{text} 
-            .col-9
-                button.btn.btn-outline-success Edit
-                button.btn.btn-outline-danger Delete
+mixin todo-item(text, todo_id='', isChecked)
+    li.list-group-item.d-flex.justify-content-between.align-items-center.rounded.todo-item
+      .container-fluid.px-1
+        input.form-check-input.me-2(
+          type='checkbox' 
+          onclick='todoCheckChenged(' + todo_id + ')' 
+          id='todo-check-' + todo_id
+          checked= isChecked)
+        i(id= 'todo-text-' + todo_id
+        class= isChecked ? 'checked' : '') #{text} 
+      
+      .container-fluid.d-flex.justify-content-end.px-1
+          button.btn.btn-outline-success.mx-2
+            i.bi.bi-pencil
+          
+          form(
+            action= "/remove/" + todo_id
+            method= "post")
+            button.btn.btn-outline-danger
+              i.bi.bi-trash
                 
-
-mixin test()
-    p It is Test!

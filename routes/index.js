@@ -1,37 +1,35 @@
 var express = require('express');
 var router = express.Router();
 
-var tasks = ["buy socks", "practise with nodejs"];
-var complete = [];
+var data = {title: 'Сделай это!', todoItems: []};
 
-/* GET home page. */
+class todoItem {
+  constructor(text, isChecked) {
+      this.text = text;
+      this.checked = isChecked;
+  }
+}
+
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', tasks, complete });
+  res.render('index', data);
 });
 
-router.post('/addtask', function(req, res) {
+router.post('/add', function(req, res) {
+  var text = req.body.newTask;
+  if( text.length > 0) {
+    data.todoItems.push(new todoItem(text, false));
+  }
   
-  var newTask = req.body.newtask;
-  
-  tasks.push(newTask);
   res.redirect('/');
 });
 
-router.post('/removetask', function(req, res) {
-  var completeTask = req.body.check;
+router.post('/remove/:id', function(req, res) {
+  var id = req.params.id;
+  data.todoItems.pop(id);
   
-  if (typeof completeTask === "string") {
-    complete.push(completeTask);
-    tasks.splice(tasks.indexOf(completeTask), 1);
-  } 
-  else if (typeof completeTask === "object") {
-    for (var i = 0; i < completeTask.length; i++) {     
-      complete.push(completeTask[i]);
-      tasks.splice(tasks.indexOf(completeTask[i]), 1);
-    }
-  } 
-  
-  res.redirect("/");
+  res.redirect('/');
 });
+
 
 module.exports = router;

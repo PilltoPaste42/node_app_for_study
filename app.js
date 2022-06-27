@@ -1,9 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+var sass = require('node-sass-middleware');
 var bodyParser = require('body-parser');
-var sassMV = require('node-sass-middleware');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -14,21 +13,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(sassMV(
+app.use(bodyParser.json());
+
+app.use(sass(
   {
     src: path.join(__dirname, '/public/stylesheets/sass'), 
     dest:path.join(__dirname, '/public/stylesheets'),
     outputStyle: 'compressed',
-    debug: true,
+    debug: false,
     prefix: '/stylesheets'
   })
 );
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bs', express.static(path.join(__dirname, '/node_modules/bootstrap')));
+app.use('/bs-i', express.static(path.join(__dirname, '/node_modules/bootstrap-icons')));
 app.use('/jq', express.static(path.join(__dirname, '/node_modules/jquery')));
 
 app.use('/', indexRouter);

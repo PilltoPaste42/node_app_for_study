@@ -8,13 +8,21 @@ block content
         .col.col-xl-10 
           .card
             .card-header.text-center
-              h1 My simple ToDo List App
+              h1 Список дел
             .card-body.p-5 
               // Add task form
-              form(action="#").d-flex.justify-content-center.align-items-center.mb-4
+              form.d-flex.justify-content-center.align-items-center.mb-4(
+                action="/add"
+                method="post")
                 .form-outline.flex-fill
-                  input.form-control(type='text' placeholder="New task...")
-                button.btn.btn-info.ms-2(type='submit') Add
+                  input.form-control(
+                    type='text' 
+                    placeholder="Писать новую задачу сюда" 
+                    name="newTask")
+                button.btn.btn-info.ms-2(type='submit') Добавить
               
-              ul.list-group.todo-list
-                +todo-item('test')
+              ul.list-group.todo-list(name="todoList")
+                each val, index in todoItems
+                  +todo-item(val.text, index, val.checked)
+  
+  script(src="/javascripts/todo.js") 

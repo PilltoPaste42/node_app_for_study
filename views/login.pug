@@ -1,13 +1,28 @@
 extends layout
 
 block content
-    .container-fluid.d-flex.align-items-center.justify-content-center.h-100.py-5
+    .container-fluid.d-flex.align-items-center.justify-content-center.py-5
         .card.text-center
             .card-body
-                form.form-signin.justify-content-center.align-items-center.h-5
-                    input#inputEmail.form-control.my-3(type='email' placeholder='Email address' required autofocus)
-                    input#inputPassword.form-control.my-3(type='password' placeholder='Password' required)
-                    button.btn.btn-lg.btn-primary.mb-3(type='submit') Sign in
+                
+                p#loginAlert #{alert}
+                    
+                form.form-signin.justify-content-center.align-items-center.h-5(method='post')
+                    input#inputEmail.form-control.my-3(
+                        name='loginEmail' 
+                        type='email' 
+                        placeholder='Email' 
+                        required 
+                        autofocus)
+                    input#inputPassword.form-control.my-3(
+                        name='loginPassword' 
+                        type='password' 
+                        placeholder='Пароль' 
+                        required)
+                    button.btn.btn-lg.btn-primary.mb-3(type='submit') Войти куда-то
+    
+    script(type='text/javascript' src='/javascripts/login.js')
+        
     
 
     
